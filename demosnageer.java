@@ -1,4 +1,5 @@
 public class demosnageer {
+
     
     public static void main(String args[]){
         int x =34;
@@ -10,5 +11,6 @@ public class demosnageer {
     public void demo(int x){
 
         System.out.println(x);
-    }
+
+}
 }
