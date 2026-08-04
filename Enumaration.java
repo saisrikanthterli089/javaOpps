@@ -7,6 +7,13 @@ enum EnumDemoSample{
     SATURDAY(111, 112, "srikanth1"),
     SUNDAY(113, 114, "Terli1122");
 
+    public void printmessage(){
+        if(this.equals(FRIDAY)){
+            System.out.println(name);
+        }
+        System.out.println("this is : "+this);
+    }
+    String name ="hello";
     EnumDemoSample(){
         System.out.println("Zero Paramters");
     }
@@ -16,11 +23,13 @@ enum EnumDemoSample{
 
 
 
+
 }
 
 public class Enumaration {
     public static void main(String[] args) {
         
-        System.out.println(EnumDemoSample.valueOf("MONDAY"));
+       EnumDemoSample.FRIDAY.printmessage();
+    //System.out.println(EnumDemoSample.TUESDAY.name);
     }
 }
