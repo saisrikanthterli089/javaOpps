@@ -27,11 +27,17 @@ public class HashMapExamples01 {
         System.out.println("keys in hashmap : " +hashmap.keySet());
         System.out.println("values in hashMap : "+hashmap.values());
 
-       HashMap<Integer,String> result= hashmap.entrySet().stream()
+hashmap.entrySet().stream()
         .filter(e ->e.getValue().equals("John"))
-        .peek((Map.Entry<Integer,String> entry)->System.out.println(entry.getValue()))
-        .map( entry->Map.Entry<Integer,String>(entry.getkey(),entry.getValue().toUpperCase()))
-        .collect(Collectors.toMap((Map.Entry<Integer,String> entry)-> entry.getKey(),(Map.Entry<Integer,String> entry)->entry.getValue()));
+        .peek(e-> System.out.println("key : "+e.getKey()+" values : "+e.getValue()))
+        .map(e -> e.getValue().toUpperCase())
+        .forEach(e->System.out.println(e));
+
+
+        // .peek((Map.Entry<Integer,String> entry)->System.out.println(entry.getValue()))
+
+        // .map( entry->Map.Entry<Integer,String>(entry.getkey(),entry.getValue().toUpperCase()))
+        // .collect(Collectors.toMap((Map.Entry<Integer,String> entry)-> entry.getKey(),(Map.Entry<Integer,String> entry)->entry.getValue()));
         
     }
 }
