@@ -12,6 +12,6 @@ public class HashMapExercise01 {
         hashMap.put(111,"shero");
         hashMap.put(112,"piku");
 
-        hashMap.entrySet().stream().map(e -> e.getValue().toUpperCase()).peek(e->System.out.println(e)).forEach(e->System.out.println(e));
+        hashMap.entrySet().stream().filter(e->e.getValue()=="Terli").map(e -> e.getValue().toUpperCase()).peek(e->System.out.println(e)).forEach(e->System.out.println(e));
     }
 }
