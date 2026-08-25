@@ -2,6 +2,7 @@ package streamsexcrices;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.stream.Collectors;
 
 public class HashMapWithStreamsStrings{
     public static void main(String[] args) {
@@ -14,7 +15,8 @@ public class HashMapWithStreamsStrings{
          HashMap<Character,Integer> hashMap = new HashMap<>();
 
          HashMap<Character,Integer> mapdata = Arrays.asList(c).stream()
-                                                .
+                                               
+                                                .collect(Collectors.toMap(c,0,(oldvalues,newvalues)->oldvalues+newvalues))
 
         // for(char d : c){
         //     if(hashMap.containsKey(d)){

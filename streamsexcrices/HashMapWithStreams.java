@@ -1,8 +1,9 @@
 package streamsexcrices;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class HashMapWithStreams {
     public static void main(String[] args) {
@@ -14,5 +15,8 @@ public class HashMapWithStreams {
                 return true;
             }else return false;
         }).distinct().forEach(s -> System.out.println(s));
+
+        Map<Integer,Long> map = list.stream().collect(Collectors.groupingBy(e->e,Collectors.counting()));
+        System.out.println(map);
     }
 }
