@@ -42,7 +42,7 @@ class EmployeeData{
     }
     @Override
     public String toString() {
-        return " id=" + id + ", name=" + name ;
+        return " [id=" + id + ", name=" + name+"}" ;
     }
 
     
@@ -57,7 +57,7 @@ public class MapStreams {
     map.put(101, new EmployeeData(101, "Srikanth", "Male", "IT"));
     map.put(102, new EmployeeData(102, "Rahul", "Male", "HR"));
     map.put(103, new EmployeeData(103, "Priya", "Female", "Finance"));
-    map.put(104, new EmployeeData(104, "Anjali", "Female", "IT"));
+    map.put(104, new EmployeeData(104, "Anjali", "Male", "IT"));
     map.put(105, new EmployeeData(105, "Kiran", "Male", "Sales"));
     map.put(106, new EmployeeData(106, "Sneha", "Female", "HR"));
     map.put(107, new EmployeeData(107, "Ravi", "Male", "Finance"));
@@ -87,5 +87,42 @@ public class MapStreams {
     Map<String,List<String>> employeesGroup = map.values().stream()
     .collect(Collectors.groupingBy(e->e.getDepartment(),Collectors.mapping(e->e.getName(), Collectors.toList())));
     System.out.println(employeesGroup);
+
+
+    // 6. Get employee with highest ID
+
+    map.values().stream().map(e->e.getId()).sorted(Comparator.reverseOrder()).limit(1).forEach(e->System.out.println(e));
+
+
+    // 7. Get only employee names as List
+    List<String> EmployeeDataNames = map.values().stream().map(e->e.getName()).collect(Collectors.toList());
+    System.out.println(EmployeeDataNames);
+
+    // 8. Find all male employees from IT
+    map.values().stream().filter(e->{
+        if(e.getDepartment()=="IT" && e.getGender()=="Male"){
+            return true;
+        }return false;
+    }).forEach(System.out::println);
+
+
+    // 9. Sort employees by name
+
+    Comparator<EmployeeData> comparator = new Comparator<EmployeeData>() {
+
+        public int compare(EmployeeData o1, EmployeeData o2) {
+           return o2.getName().compareTo(o1.getName());
+        }
+
+  
+        
+    };
+
+    map.values()
+   .stream()
+   .sorted(Comparator.comparing(EmployeeData::getName).reversed())
+   .forEach(e -> System.out.println(e.getName()));
+    // map.values().stream().map(e->e.getName()).sorted(comparator.reversed()).forEach(System.out::println);
 }
+
 }

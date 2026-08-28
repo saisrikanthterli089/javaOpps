@@ -8,7 +8,8 @@ enum EnumDemoSample{
     SUNDAY(113, 114, "Terli1122");
 
     public void printmessage(){
-        if(this.equals(FRIDAY)){
+        if(this.equals(FRIDAY))
+        {
             System.out.println(name);
         }
         System.out.println("this is : "+this);

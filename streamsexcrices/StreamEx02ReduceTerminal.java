@@ -25,7 +25,7 @@ public class StreamEx02ReduceTerminal {
 
        Optional<Integer> in = l.stream().skip(1).findFirst();
 
-       IntSummaryStatistics ist = l.stream().mapToInt(Integer::intValue()).summaryStatics();
+       IntSummaryStatistics ist = l.stream().mapToInt(Integer::intValue).summaryStatistics();
        System.out.println(in.get());
     }
 }

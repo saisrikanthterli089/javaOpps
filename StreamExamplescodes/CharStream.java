@@ -7,6 +7,9 @@ public class CharStream {
         char[] c = {'i','j','l','o','u','l','a','a'};
 
 
-        String d = new String(c).chars().mapToObj(ch->(char)ch).reduce("",(a+b)->a.append(b));
-    }
+String d = new String(c)
+        .chars()
+        .mapToObj(ch -> String.valueOf((char) ch))
+        .reduce("", (a, b) -> a.concat(b));
+     }
 }
