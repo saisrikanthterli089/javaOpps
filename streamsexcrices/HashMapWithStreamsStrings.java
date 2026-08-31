@@ -2,6 +2,9 @@ package streamsexcrices;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class HashMapWithStreamsStrings{
     public static void main(String[] args) {
@@ -13,8 +16,20 @@ public class HashMapWithStreamsStrings{
          char[] c =trimvalues.toCharArray();
          HashMap<Character,Integer> hashMap = new HashMap<>();
 
-         HashMap<Character,Integer> mapdata = Arrays.asList(c).stream()
-                                                .
+        //  Map<Character,Integer> mapdata = new String(c).chars()
+        //  .mapToObj(ch->(char)ch)
+                                               
+        //                                         .collect(Collectors.toMap(Function.identity(),1,(e,b)->e+b));
+
+Map<Character, Integer> mapdata =
+        new String(c).chars()
+                .mapToObj(ch -> (char) ch)
+                .collect(Collectors.toMap(
+                        Function.identity(),
+                        e -> 1,
+                        (e,b) -> e + b
+                ));
+                System.out.println(mapdata);
 
         // for(char d : c){
         //     if(hashMap.containsKey(d)){
