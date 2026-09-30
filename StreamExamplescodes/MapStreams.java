@@ -66,10 +66,17 @@ public class MapStreams {
 
 
     // 1. Print all employee names
+        List<String> listdataresu = map.values().stream().map(e->e.getName()).collect(Collectors.toList());
+
+
+
     List<String> list = map.values().stream().map(e->e.getName()).collect(Collectors.toList());
     System.out.println(list);
 
     // 2. Get employees from IT department
+
+        Map<String,List<String>> datatoMap= map.values().stream().filter(e->e.getDepartment().equals("IT")).collect(Collectors.groupingBy(e->e.getDepartment(),Collectors.Mapping(e->e.getNames().toList())));
+
     Map<String,List<EmployeeData>> mapdata = map.values().stream().collect(Collectors.groupingBy(e->e.getDepartment()));
     System.out.println(mapdata);
 
